@@ -55,7 +55,6 @@ Starting parameter sweep for 'frac_train'...
 To understand the embedding matrix and the activations of the MLP, neurons were extracted from the trained model and analyzed using a one-dimensional Discrete Fourier Transform. The Fourier spectra revealed that the learned representations were not distributed evenly. Most of the energy was concentrated which produced a sparse frequency representation. This indicates that the network discovered a Fourier-based encoding of the modular addition task. The same pattern appeared in both the embedding matrix and the MLP activations. This suggests that the model doesn’t memorize. These results provide evidence that the network has learned the underlying pattern and uses sparse frequency features.
 <img width="909" height="590" alt="image" src="https://github.com/user-attachments/assets/f82dd327-a741-4ac3-b9f3-c88dbb628a25" />
 <img width="900" height="579" alt="image" src="https://github.com/user-attachments/assets/e9a8ffe5-5dcc-4f57-9b33-94e9d28cdcde" />
-<img width="900" height="598" alt="image" src="https://github.com/user-attachments/assets/3fd93846-d613-4fc4-98ee-b2a54ef32813" />
 
 ## Transformer for Module Multiplication
 This part of the report looks at how a small neural network solves a non-linear math problem: multiplying numbers with a modulo of 113. Instead of memorizing, it is forced to discover a pattern. Instead of using hard multiplications, the network turns them into simple logarithmic problems.
