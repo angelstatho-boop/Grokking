@@ -6,13 +6,7 @@ Presented to Mr. Ivan T. Ivanov
 
 ## Reproduction with a Distinct Prime Modulus
 Grokking is a phenomenon in machine learning. It’s when a deep learning model suddenly transitions from memorization to near-perfect validation accuracy, long after it has seemingly overfitted the training data. This part of the project investigates the mechanics of ‘grokking’ by using a one-layer transformer. To demonstrate the universality of this phenomenon beyond the baseline implementations, the model was trained on an addition task using a distinct prime modulus of 67. By limiting the training data and applying strong regularization, we create a setup that forces the model to move past memorization and discover an underlying pattern. 
-Hyperparameter	Configuration Value	Purpose 
-Model Architecture	1-Layer, Attention-Only Transformer	Eliminates multi-layer perceptron complexity to isolate attention mechanisms
-Prime Modulus (p)	67	Distinct problem dimension; yields a total space of 672=4,489 equations
-Training Split	30%	Restricts training data to 1,346 equations to promote overfitting
-Optimizer & Learning Rate	AdamW, η=10−3	Standard optimization tracking
-Weight Decay 	1	Heavy regularization; serves as the pressure that penalizes complex memorization weights
-Total Epochs	40,000 	Extended training window necessary to observe delayed phase transitions
+<img width="804" height="541" alt="image" src="https://github.com/user-attachments/assets/360c26ae-4867-49bf-bc86-ab6ccecdbea7" />
 <img width="900" height="446" alt="image" src="https://github.com/user-attachments/assets/4dfac896-60e0-4c17-8a55-3f813b0a7514" />
 The log plot of the training and validation loss reveals a classic grokking trajectory. The training path can be characterized into three phases:
 Phase 1: Overfitting & Memorization (Epochs 0 to 1000)
@@ -41,13 +35,12 @@ Starting parameter sweep for 'frac_train'...
 <img width="850" height="507" alt="image" src="https://github.com/user-attachments/assets/b7ed65f4-02f8-4ea2-b572-83e9ab91c9ea" />
 
 ## 1D DFT
+To understand the embedding matrix and the activations of the MLP, neurons were extracted from the trained model and analyzed using a one-dimensional Discrete Fourier Transform. The Fourier spectra revealed that the learned representations were not distributed evenly. Most of the energy was concentrated which produced a sparse frequency representation. This indicates that the network discovered a Fourier-based encoding of the modular addition task. The same pattern appeared in both the embedding matrix and the MLP activations. This suggests that the model doesn’t memorize. These results provide evidence that the network has learned the underlying pattern and uses sparse frequency features.
 <img width="909" height="590" alt="image" src="https://github.com/user-attachments/assets/f82dd327-a741-4ac3-b9f3-c88dbb628a25" />
 <img width="900" height="579" alt="image" src="https://github.com/user-attachments/assets/e9a8ffe5-5dcc-4f57-9b33-94e9d28cdcde" />
 <img width="900" height="598" alt="image" src="https://github.com/user-attachments/assets/3fd93846-d613-4fc4-98ee-b2a54ef32813" />
-To understand the embedding matrix and the activations of the MLP, neurons were extracted from the trained model and analyzed using a one-dimensional Discrete Fourier Transform. The Fourier spectra revealed that the learned representations were not distributed evenly. Most of the energy was concentrated which produced a sparse frequency representation. This indicates that the network discovered a Fourier-based encoding of the modular addition task. The same pattern appeared in both the embedding matrix and the MLP activations. This suggests that the model doesn’t memorize. These results provide evidence that the network has learned the underlying pattern and uses sparse frequency features.
 
 ## Transformer for Module Multiplication
-<img width="900" height="445" alt="image" src="https://github.com/user-attachments/assets/fea2bf1a-7176-48e2-b30c-bc5d31ab8c16" />
 This part of the report looks at how a small neural network solves a non-linear math problem: multiplying numbers with a modulo of 113. Instead of memorizing, it is forced to discover a pattern. Instead of using hard multiplications, the network turns them into simple logarithmic problems.
 Because of weight decay, the model abandoned the memorization circuits and used either a trigonometric or discrete log circuit. The sudden drop in test loss is proof that the underlying pattern was found.
-
+<img width="900" height="445" alt="image" src="https://github.com/user-attachments/assets/fea2bf1a-7176-48e2-b30c-bc5d31ab8c16" />
